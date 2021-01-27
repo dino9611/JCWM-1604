@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Market V.1.1</title>
+    </head>
+    <script>
+        var hargaApel=10000
+        var hargaAnggur=15000
+        var hargaJeruk=20000
+    
+        alert('Selamat datang di toko kami')
+        alert(`Daftar Buah:\n1. Apel : Rp.${hargaApel}\n2. Anggur :Rp.${hargaAnggur}\n3. Jeruk : Rp.${hargaJeruk}`)
+        
+        var qtyApel= prompt('Berapa mau beli Apel ?')
+        console.log(typeof qtyApel,"input quantity apel line 12")
+        var qtyAnggur= prompt('Berapa mau beli Anggur ?')
+        var qtyJeruk= prompt('Berapa mau beli Jeruk ?')
+    
+        var Total= (hargaApel * qtyApel)+ (qtyAnggur*hargaAnggur) + (qtyJeruk*hargaJeruk)
+        
+        
+        alert(`1. Apel= ${qtyApel} * Rp.${hargaApel} = Rp.${qtyApel*hargaApel}\n2. Anggur= ${qtyAnggur} * Rp.${hargaAnggur} = Rp.${qtyAnggur*hargaAnggur}\n3. Jeruk =${qtyJeruk} * Rp.${hargaJeruk} = Rp.${qtyJeruk*hargaJeruk}\nTotal= Rp. ${Total}`)
+    
+    </script>
+</html>

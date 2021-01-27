@@ -1,6 +1,36 @@
-<script>
-    // muncul mesin memnita input user dia masuk jam berapa (1-24)
-    // muncul mesin memnita input user dia keluar jam berapa (1-24)
-    // keluar itu harus lebih besar dari masuk
-    // alert berapa lama  parkirnya terus untuk biaya parkirnya itu 1000 per jam
-</script>
+<html>
+    <head>
+        <title>Parkir App V.1.0 beta</title>
+    </head>
+    <script>
+        // masuk 3 am 7 pm 7 pm 7pm 6pm 6am 4am  7pm
+        // keluar 1 pm 6 am 8 pm 8am 5pm 4 am 6am 8am
+        // keluar - masuk 
+        // syarat ditambah 12
+        // - am/pm berbeda
+        // syarat ditambah 24
+        // - keluar lebih kecil daripada masuk tapi am/pm Sama
+        // syarat biasa aja
+        // keluar lebih besar dari pada masuk tapi am/pm sama
+        // -2 + 12 = 10
+        // -1 + 12  = 11
+        // 1 + 12 = 13
+        // -1 + 24 = 23
+        // -2 + 24 =22 1000 24 kalau motor
+        // jika lama parkir kurang dari sama dengan 2 jam maka biaya=lamaparkir*2000
+        // else lamaparkir-2 jam dikali 1000 hasilnya ditambah (2*2000)
+
+        // muncul mesin memnita input user dia masuk jam berapa (1-24)
+        // muncul mesin memnita input user dia keluar jam berapa (1-24)
+        // keluar itu harus lebih besar dari masuk
+        // alert berapa lama  parkirnya terus untuk biaya parkirnya itu 1000 per jam
+        alert (`selamat datang ditempat parkir`)
+        var biayaParkirperJam=1000
+        var jamMasuk=prompt('masuk jam berapa ? (1-24)')
+        var jamKeluar= prompt('Keluar jam berapa ? (1-24)')
+        var berapaLama= jamKeluar-jamMasuk
+        var biaya=berapaLama* biayaParkirperJam
+        alert(`Anda parkir selama ${berapaLama} jam, anda harus bayar Rp.${biaya}`)
+        alert('selamat jalan')
+    </script>
+</html>
