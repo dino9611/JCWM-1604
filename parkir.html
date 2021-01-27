@@ -1,14 +1,52 @@
-<script>
-    // pakai kendaraan apa dulu : 1.mobil 2. motor
-    // inputnya masuk atau input keluarnya (0-11)
-    // kalo misalkan inputnya salah nggak sesuai kasih alert input salah terus program berhenti
-    // tapi klo bener lanjutannya adalah 
-    // kalian buat list ada 
-    // 1. pm
-    // 2. am
-    // range hitungnya masksimal 24 jam
-    // kalau misalkan pake motor 1000
-    // kalau misalakan pake mobil 2000
-    //  2 jam pertama parkirnya mobil 4000 motor 2000   
-
-</script>
+<html>
+    <head>
+        <title>
+            Parkir V.1.2
+        </title>
+    </head>
+    <script>
+        // logic
+          // masuk 3 am 7 pm 7 pm 7pm 6pm 6am 4am  7pm
+            // keluar 1 pm 6 am 8 pm 8am 5pm 4 am 6am 8am
+            // keluar - masuk 
+            // syarat ditambah 12
+            // - am/pm berbeda
+            // syarat ditambah 24
+            // - keluar lebih kecil daripada masuk tapi am/pm Sama
+            // syarat biasa aja
+            // keluar lebih besar dari pada masuk tapi am/pm sama
+            // -2 + 12 = 10
+            // -1 + 12  = 11
+            // 1 + 12 = 13
+            // -1 + 24 = 23
+            // -2 + 24 =22 1000 24 kalau motor
+            // jika lama parkir kurang dari sama dengan 2 jam maka biaya=lamaparkir*2000
+            // else lamaparkir-2 jam dikali 1000 hasilnya ditambah (2*2000)
+        // logic end
+        // soal
+        // pakai kendaraan apa dulu : 1.mobil 2. motor
+        // inputnya masuk atau input keluarnya (0-11)
+        // kalo misalkan inputnya salah nggak sesuai kasih alert input salah terus program berhenti
+        // tapi klo bener lanjutannya adalah 
+        // kalian buat list ada 
+        // 1. pm
+        // 2. am
+        // range hitungnya masksimal 24 jam
+        // kalau misalkan pake motor 1000
+        // kalau misalakan pake mobil 2000
+        //  2 jam pertama parkirnya mobil 4000 motor 2000   
+    
+    var kendaraan=prompt('kendaraan ?\n1.Mobil\n2.Motor')
+    var masuk = prompt('masuk jam berapa (1-11)')
+    var kondisimasuk =prompt('1.Pm\n2.Am')
+    var hargaperjam
+    var harga1jampertama
+    if(kendaraan==1){
+        hargaperjam=2000
+        harga1jampertama=4000
+    }else{
+        hargaperjam=1000
+        harga1jampertama=2000
+    }
+    </script>
+</html>

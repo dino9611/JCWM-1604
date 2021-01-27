@@ -80,10 +80,6 @@ if(kata){
 
 
 
-
-
-
-
-
-
-
+var tanggal= new Date('26-01-2021').getTime()
+var tanggalhariini=new Date()
+console.log(tanggalhariini)
