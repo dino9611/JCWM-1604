@@ -1,5 +1,5 @@
 # Day 4
-## conditional statement
+## Loop statement
 
 
 ### Pr parkir 
