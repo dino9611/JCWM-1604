@@ -5,9 +5,16 @@
         </title>
     </head>
     <script>
+        // -2 + 12  =10 
+        // -1 + 12 = 11
+        // 1 
+        // 1 + 12 = 13
+        // -1 + 24 =23
+        // -2 + 24=22 
+        // 2 
         // logic
-          // masuk 3 am 7 pm 7 pm 7pm 6pm 6am 4am  7pm
-            // keluar 1 pm 6 am 8 pm 8am 5pm 4 am 6am 8am
+            // masuk 3am 7pm 7pm 7pm 6pm 6am 4am  7pm
+            // keluar 1pm 6am 8pm 8am 5pm 4am 6am 8am
             // keluar - masuk 
             // syarat ditambah 12
             // - am/pm berbeda
@@ -35,18 +42,62 @@
         // kalau misalkan pake motor 1000
         // kalau misalakan pake mobil 2000
         //  2 jam pertama parkirnya mobil 4000 motor 2000   
+
+    // User Requirment :
+
+    // prompt / minta input kendaraanya apa 
+    // prompt / minta input masuk jam berapa
+    // prompt / minta input tanya pm atau am masuknya 
+    // prompt / minta input keluar jam berapa
+    // prompt / minta input tanya pm atau am keluarnya
+    // tampilkan /alert total jam sama biaya 
     
+    // Persyaratan:
+    // range maksimal 24 jam
+    // motor 1000 perjam dan mobil 2000 perjam
+    // tapi 2 jam pertama mobil 4000 , motor 2000
+
+    // jika am/pm beda maka lamajam +=12
+    // jika am/pm sama tapi waktu keluar lebih kecil maka +=24
+    // sisanya tidak diapa-apain
+    
+    // untuk hargaperjam jika mobil 2000 lainnya 1000
+    // untuk hargaperjamdalam2jampertama jika mobil 4000 lainnya 2000
+
+    // anggap aja motor
+    // 1 jam biaya parkir = 2000
+    // 2 jam biaya parkir = 4000
+    // 3 jam biaya parkir = 5000
+    // jika lamajam > 2 
+    // (5-2) * hargaperjam + (2*hargaper1jampertama)
+    // lainnya : lamajam *hargaper1jampertama 
     var kendaraan=prompt('kendaraan ?\n1.Mobil\n2.Motor')
-    var masuk = prompt('masuk jam berapa (1-11)')
+    var masuk = prompt('masuk jam berapa (0-11)')
     var kondisimasuk =prompt('1.Pm\n2.Am')
-    var hargaperjam
+    var keluar = prompt('kelaur jam berapa (0-11)')
+    var kondisikeluar =prompt('1.Pm\n2.Am')
+    var hargaperjam 
     var harga1jampertama
-    if(kendaraan==1){
+    if(kendaraan == 1){
         hargaperjam=2000
         harga1jampertama=4000
-    }else{
+    }else if(kendaraan == 2){
         hargaperjam=1000
         harga1jampertama=2000
     }
+    var lamajam=keluar-masuk
+    if(kondisimasuk != kondisikeluar){
+        lamajam+=12
+    }else if((keluar<=masuk) && (kondisimasuk==kondisikeluar)){
+        lamajam+=24
+    }
+    var total
+    if(lamajam>2){
+        total=((lamajam-2) * hargaperjam) + (2*harga1jampertama)
+    }else{
+        total=2*harga1jampertama
+    }
+    alert(`anda harus bayar Rp.${total}`)
+    // alert(lamajam )
     </script>
 </html>
