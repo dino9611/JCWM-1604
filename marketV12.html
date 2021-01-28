@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Market V.1.2</title>
+    </head>
+    <script>
+        // jika user menginput melebihi stok maka jumlah stok yang ada menjadi qty
+        var hargaApel=10000
+        var hargaAnggur=15000
+        var hargaJeruk=20000
+        
+        var stokAnggur= 5
+        var stokApel =5
+        var stokJeruk =5
+        alert('Selamat datang di toko kami')
+        alert(`Daftar Buah:\n1. Apel : Rp.${hargaApel}\n2. Anggur :Rp.${hargaAnggur}\n3. Jeruk : Rp.${hargaJeruk}`)
+        
+        var qtyApel= prompt('Berapa mau beli Apel ?')
+        if(qtyApel > stokApel){
+            alert('stok tidak mencukupi maka quantity diubah menjadi '+ stokApel)
+            qtyApel = stokApel
+        }
+        var qtyAnggur= prompt('Berapa mau beli Anggur ?')
+        if(qtyAnggur > stokAnggur){
+            alert('stok tidak mencukupi maka quantity diubah menjadi '+ stokAnggur)
+            qtyAnggur = stokAnggur
+        }
+        var qtyJeruk= prompt('Berapa mau beli Jeruk ?')
+        if(qtyJeruk > stokJeruk){
+            alert('stok tidak mencukupi maka quantity diubah menjadi '+ stokJeruk)
+            qtyJeruk = stokJeruk
+        }
+    
+        var Total= (hargaApel * qtyApel)+ (qtyAnggur*hargaAnggur) + (qtyJeruk*hargaJeruk)
+        
+        
+        var Bayar=prompt(`1. Apel= ${qtyApel} * Rp.${hargaApel} = Rp.${qtyApel*hargaApel}\n2. Anggur= ${qtyAnggur} * Rp.${hargaAnggur} = Rp.${qtyAnggur*hargaAnggur}\n3. Jeruk =${qtyJeruk} * Rp.${hargaJeruk} = Rp.${qtyJeruk*hargaJeruk}\nTotal= Rp. ${Total}`)
+        
+        if(Bayar > Total){
+            alert(`kembalian anda adalah Rp.${Bayar-Total}`)
+        }else if(Bayar == Total){
+            alert('terima kasih duitnya pas bos')
+        }else{
+            alert('anda miskin')
+        }
+
+    </script>
+</html>
