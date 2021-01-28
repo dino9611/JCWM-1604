@@ -72,32 +72,36 @@
     // (5-2) * hargaperjam + (2*hargaper1jampertama)
     // lainnya : lamajam *hargaper1jampertama 
     var kendaraan=prompt('kendaraan ?\n1.Mobil\n2.Motor')
-    var masuk = prompt('masuk jam berapa (0-11)')
-    var kondisimasuk =prompt('1.Pm\n2.Am')
-    var keluar = prompt('kelaur jam berapa (0-11)')
-    var kondisikeluar =prompt('1.Pm\n2.Am')
-    var hargaperjam 
-    var harga1jampertama
-    if(kendaraan == 1){
-        hargaperjam=2000
-        harga1jampertama=4000
-    }else if(kendaraan == 2){
-        hargaperjam=1000
-        harga1jampertama=2000
-    }
-    var lamajam=keluar-masuk
-    if(kondisimasuk != kondisikeluar){
-        lamajam+=12
-    }else if((keluar<=masuk) && (kondisimasuk==kondisikeluar)){
-        lamajam+=24
-    }
-    var total
-    if(lamajam>2){
-        total=((lamajam-2) * hargaperjam) + (2*harga1jampertama)
+    if(kendaraan != 1 || kendaraan != 2){
+        alert('input salah program berhenti')
     }else{
-        total=2*harga1jampertama
+        var masuk = prompt('masuk jam berapa (0-11)')
+        var kondisimasuk =prompt('1.Pm\n2.Am')
+        var keluar = prompt('kelaur jam berapa (0-11)')
+        var kondisikeluar =prompt('1.Pm\n2.Am')
+        var hargaperjam 
+        var harga1jampertama
+        if(kendaraan == 1){
+            hargaperjam=2000
+            harga1jampertama=4000
+        }else if(kendaraan == 2){
+            hargaperjam=1000
+            harga1jampertama=2000
+        }
+        var lamajam=keluar-masuk
+        if(kondisimasuk != kondisikeluar){
+            lamajam+=12
+        }else if((keluar<=masuk) && (kondisimasuk==kondisikeluar)){
+            lamajam+=24
+        }
+        var total
+        if(lamajam>2){
+            total=((lamajam-2) * hargaperjam) + (2*harga1jampertama)
+        }else{
+            total=2*harga1jampertama
+        }
+        alert(`anda harus bayar Rp.${total}`)
     }
-    alert(`anda harus bayar Rp.${total}`)
     // alert(lamajam )
     </script>
 </html>
