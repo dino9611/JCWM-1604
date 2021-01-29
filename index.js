@@ -76,8 +76,8 @@ var rows = 5
 // ****
 // *****
 // rows-=1
-// for(var i=rows;i>(-1*rows)-1;i--){
-//     for(var j=0;j<=Math.abs(i);j++){
+// for(var i=rows-1;i>=(-1*rows);i--){
+//     for(var j=0;j<Math.abs(i)+1;j++){
 //         stars+='*'
 //     }
 //     stars+='\n'
@@ -102,19 +102,85 @@ var rows = 5
 //     }
 // }
 
-var angka= 30
+// var angka= 30
 
-for(var i=1;i<=angka;i++){
-    if((i % 3 == 0) && (i % 5 == 0) ){
-        console.log('FizzBuzz')
-    }else if( i % 3 == 0){
-        console.log('Fizz')
-    }else if(i % 5 == 0){
-        console.log('Buzz')
-    }else{
-        console.log(i)
-    }
-}
+// for(var i=1;i<=angka;i++){
+//     if((i % 3 == 0) && (i % 5 == 0) ){
+//         console.log('FizzBuzz')
+//     }else if( i % 3 == 0){
+//         console.log('Fizz')
+//     }else if(i % 5 == 0){
+//         console.log('Buzz')
+//     }else{
+//         console.log(i)
+//     }
+// }
+
+//algorithm bilangan prima
+// 1 - 20
+// 1 2 3 5 7 11 
+// var angka= 100
+// var qtyHabisdibagi=0
+// var bilanganprima=0
+// for(var i=1;i<=angka;i++){
+//     if(i<=3){
+//         bilanganprima++
+//     }else{
+//         qtyHabisdibagi=0
+//         for(var j=i; j>0;j--){
+//             if(i%j == 0){
+//                 qtyHabisdibagi++
+//             }
+//         }
+//         if(qtyHabisdibagi == 2){
+//             bilanganprima++
+//         }
+//     }
+// }
+// console.log(bilanganprima)
+// code segitiga rata kanan 
+
+// ssss* 4 i=0
+// sss** 3 i=1
+// ss*** 2 i=2
+// s**** 1 i=3
+// ***** 0 i=4
+
+// for (var i=0;i<rows;i++){
+//     for(var j=0;j<rows;j++){
+//         if(j < (rows - i)-1){ 
+//             stars+=' '
+//         }else{
+//             stars+='*'
+//         }
+//     }
+//     stars+='\n'
+// }
+
+// for (var i=0;i<rows;i++){
+//     for(var j=i+1;j<rows;j++){
+//        stars +=' '
+//     }
+//     for(var k=0;k<=i;k++){
+//         stars += '#'
+//     }
+//     stars+='\n'
+// }
 
 
-console.log(stars)
+// console.log(stars)
+var bool = 5
+// var isi
+// if(bool == 5){
+//     isi='dino'
+// }else{
+//     isi='rahman'
+// }
+//  sama dengan koding diatas (line 173-178)
+var isi = bool == 5 ? 'dino' : 'rahman'
+
+// console.log(isi)
+
+var kata = null
+var nama = kata || 123
+console.log(nama)
