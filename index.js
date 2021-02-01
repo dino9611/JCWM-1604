@@ -148,18 +148,18 @@ var bangku=[]
 // bangku.push(arrkosong)
 
 // console.log(arrkosong)
-var arrkosong
-for(var i=0;i<Baris.length;i++){
-    arrkosong=[]
-    for(var j=1;j<=horizontal;j++){
-        arrkosong.push(Baris[i]+j)
-    }
-    bangku.push(arrkosong)
-}
+// var arrkosong
+// for(var i=0;i<Baris.length;i++){
+//     arrkosong=[]
+//     for(var j=1;j<=horizontal;j++){
+//         arrkosong.push(Baris[i]+j)
+//     }
+//     bangku.push(arrkosong)
+// }
 
 var numbers = 123 
 //321 
 // 149
 
-console.log(bangku)
+// console.log(bangku)
 
