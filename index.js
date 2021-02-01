@@ -162,25 +162,117 @@ var rows = 5
 //        stars +=' '
 //     }
 //     for(var k=0;k<=i;k++){
-//         stars += '#'
+//         stars += '*'
 //     }
 //     stars+='\n'
 // }
 
+// ssss* 4 i=0 1 2i +1 =1 
+// sss**# 3 i=1 3 2i+ 1 =3
+// ss***## 2 i=2 5
+// s****### 1 i=3 7
+// *****#### 0 i=4 9
+
+// for (var i=0;i<rows;i++){
+//     for(var j=i+1;j<rows;j++){
+//        stars +=' '
+//     }
+//     for(var k=0;k<=i;k++){
+//         stars += '*'
+//     }
+//     for(var k=0;k<i;k++){ //buatlah hitungan diaman pada saat i=1 dia hanya looping 1 kali
+//         stars += '*'
+//     }
+//     stars+='\n'
+// }
+// cara lain
+// for (var i=0;i<rows;i++){
+//     for(var j=i+1;j<rows;j++){
+//        stars+=' '
+//     }
+//     for(var k=0;k<(i*2+1);k++){
+//         stars+='*'
+//     }
+//     stars+='\n'
+// }
+
+// *****#### i=0 s=0 bintang=5  9-(2i) =9
+// s****### 9 = (rows*2)-1
+// ss***##
+// sss**#
+// ssss*
+// for (var i=0;i<rows;i++){
+//     for(var k=0;k<i;k++){
+//         stars += ' '
+//     }
+//     for(var j=i;j<rows;j++){
+//         stars +='*'
+//     }
+//     for(var j=i;j<rows-1;j++){
+//         stars +='*'
+//     }
+//     stars+='\n'
+// }
+// cara lain
+// for (var i=0;i<rows;i++){
+//     for(var k=0;k<i;k++){
+//         stars += '   '
+//     }
+//     for(var k=0;k<((rows*2)-1)-(2*i);k++){
+//         stars+=' * '
+//     }
+//     stars+='\n'
+// }
+
+// belahketupat
+
+// for (var i=0;i<rows;i++){
+//     for(var j=i+1;j<rows;j++){
+//            stars+='   '
+//     }
+//     for(var k=0;k<(i*2+1);k++){
+//             stars+=' * '
+//     }
+//     stars+='\n'
+// }
+// for (var i=0;i<rows;i++){
+//     if(i==0){
+//         continue
+//     }
+//     for(var k=0;k<i;k++){
+//         stars += '   '
+//     }
+//     for(var k=0;k<((rows*2)-1)-(2*i);k++){
+//         stars+=' * '
+//     }
+//     stars+='\n'
+// }
+// cara lain lagi
+for(var i=rows-1;i>(-1*rows);i--){
+    for(var k=0;k<Math.abs(i);k++){
+        stars += '   '
+    }
+    for(var k=0;k<((rows*2)-1)-(2*Math.abs(i));k++){
+        stars+=' * '
+    }
+    stars+='\n'
+}
 
 // console.log(stars)
-var bool = 5
-// var isi
-// if(bool == 5){
-//     isi='dino'
-// }else{
-//     isi='rahman'
-// }
-//  sama dengan koding diatas (line 173-178)
-var isi = bool == 5 ? 'dino' : 'rahman'
+// var bool = 5
+// // var isi
+// // if(bool == 5){
+// //     isi='dino'
+// // }else{
+// //     isi='rahman'
+// // }
+// //  sama dengan koding diatas (line 173-178)
+// var isi = bool == 5 ? 'dino' : 'rahman'
 
-// console.log(isi)
+// // console.log(isi)
 
-var kata = null
-var nama = kata || 123
-console.log(nama)
+// var kata = null
+// var nama = kata || 123
+// console.log(nama)
+
+// console.log(isNaN("121"))
