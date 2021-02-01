@@ -14,35 +14,42 @@
         var stokJeruk =5
         alert('Selamat datang di toko kami')
         alert(`Daftar Buah:\n1. Apel : Rp.${hargaApel}\n2. Anggur :Rp.${hargaAnggur}\n3. Jeruk : Rp.${hargaJeruk}`)
-        
-        var qtyApel= prompt('Berapa mau beli Apel ?')
-        if(qtyApel > stokApel){
-            alert('stok tidak mencukupi maka quantity diubah menjadi '+ stokApel)
-            qtyApel = stokApel
-        }
-        var qtyAnggur= prompt('Berapa mau beli Anggur ?')
-        if(qtyAnggur > stokAnggur){
-            alert('stok tidak mencukupi maka quantity diubah menjadi '+ stokAnggur)
-            qtyAnggur = stokAnggur
-        }
-        var qtyJeruk= prompt('Berapa mau beli Jeruk ?')
-        if(qtyJeruk > stokJeruk){
-            alert('stok tidak mencukupi maka quantity diubah menjadi '+ stokJeruk)
-            qtyJeruk = stokJeruk
-        }
+        var qtyApel, qtyAnggur, qtyJeruk
+        do {
+            qtyApel= prompt(`Berapa mau beli Apel= ${stokApel} ?`)
+            if(qtyApel > stokApel || isNaN(qtyApel) ||qtyApel<0){
+                alert('stok tidak mencukupi maka mohon input ulang ')
+            }
+        } while (qtyApel > stokApel || isNaN(qtyApel)||qtyApel<0);
+
+        do {
+            qtyAnggur= prompt(`Berapa mau beli Anggur= ${stokAnggur} ?`)
+            if(qtyAnggur > stokAnggur || isNaN(qtyAnggur) ||qtyAnggur<0){
+                alert('stok tidak mencukupi maka mohon input ulang')
+            }
+        } while (qtyAnggur > stokAnggur || isNaN(qtyAnggur) || qtyAnggur<0);
+
+        do {
+            qtyJeruk= prompt(`Berapa mau beli Jeruk= ${stokJeruk} ?`)
+            if(qtyJeruk > stokJeruk || isNaN(qtyJeruk)){
+                alert('stok tidak mencukupi maka mohon input ulang')
+            }
+        } while (qtyJeruk > stokJeruk || isNaN(qtyJeruk));
     
         var Total= (hargaApel * qtyApel)+ (qtyAnggur*hargaAnggur) + (qtyJeruk*hargaJeruk)
+        var Bayar
+        do {
+            Bayar=prompt(`1. Apel= ${qtyApel} * Rp.${hargaApel} = Rp.${qtyApel*hargaApel}\n2. Anggur= ${qtyAnggur} * Rp.${hargaAnggur} = Rp.${qtyAnggur*hargaAnggur}\n3. Jeruk =${qtyJeruk} * Rp.${hargaJeruk} = Rp.${qtyJeruk*hargaJeruk}\nTotal= Rp. ${Total}`)
+            if(Bayar > Total){
+                alert(`kembalian anda adalah Rp.${Bayar-Total}`)
+            }else if(Bayar == Total){
+                alert('terima kasih duitnya pas bos')
+            }else{
+                alert('anda miskin mohon ulangi input')
+            }
+        } while (Bayar<Total);
+
         
-        
-        var Bayar=prompt(`1. Apel= ${qtyApel} * Rp.${hargaApel} = Rp.${qtyApel*hargaApel}\n2. Anggur= ${qtyAnggur} * Rp.${hargaAnggur} = Rp.${qtyAnggur*hargaAnggur}\n3. Jeruk =${qtyJeruk} * Rp.${hargaJeruk} = Rp.${qtyJeruk*hargaJeruk}\nTotal= Rp. ${Total}`)
-        
-        if(Bayar > Total){
-            alert(`kembalian anda adalah Rp.${Bayar-Total}`)
-        }else if(Bayar == Total){
-            alert('terima kasih duitnya pas bos')
-        }else{
-            alert('anda miskin')
-        }
 
     </script>
 </html>
