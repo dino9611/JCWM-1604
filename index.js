@@ -107,8 +107,8 @@ things= ["buku","pulpen","laptop",'jam','tv']
 
 
 // exercise 1
-var names=['alex','elena','daniel','chaplin','bob']
-console.log(names.sort().reverse())
+var names=['alex','alex','elena','daniel','chaplin','bob']
+// console.log(names.sort((a,b)=>a>b?-1:1))
 
 // A1A2..A16
 
@@ -129,7 +129,7 @@ console.log(names.sort().reverse())
 // ARRAY TERSEBUT DI PUSH KE DALAM ARRAY BANGKU
 
 var Baris='ABCD'.split('')
-console.log(Baris)
+// console.log(Baris)
 var horizontal=5
 var bangku=[]
 // var arrkosong
@@ -157,9 +157,79 @@ var bangku=[]
 //     bangku.push(arrkosong)
 // }
 
-var numbers = 123 
+var numbers = 378282246310005 
+// numbers dijadiin string 
+// di split ('')
+// di reverse
+// di join
+// di parseInt
+
+// numbers=numbers.toString()
+// console.log(numbers)
+// numbers=numbers.split('')
+// console.log(numbers)
+// numbers=numbers.reverse()
+// console.log(numbers)
+// numbers=numbers.join('')
+// console.log(numbers)
+// numbers=parseInt(numbers) 
+// console.log(numbers)
 //321 
+//
+// numbers dijadiin string 
+// di split ('')
+// dilooping baru pangkatkan
+// dijoin
+// diparseInt
+// numbers=numbers.toString()
+// console.log(numbers)
+// numbers=numbers.split('')
+// console.log(numbers)
+
+
+// for(var i=0;i<numbers.length;i++){
+//     numbers[i]*=numbers[i]
+//     // numbers[i]=numbers[i].toString()
+// }
+// console.log(numbers)
+// numbers=numbers.join('')
+// console.log(numbers)
+// numbers=parseInt(numbers) 
+// console.log(numbers)
 // 149
 
 // console.log(bangku)
 
+var kata='Lintang Cute'
+var langkah=28
+var unicode
+var newString=''
+var kurang 
+for(var i=0;i<kata.length;i++){
+    unicode=kata.charCodeAt(i)
+    if(unicode==32){
+        newString+=' '
+    }else{
+        if(unicode>90){
+            kurang = 97
+        }else{
+            kurang = 65
+        }
+        var A=((unicode-kurang + langkah)%26)+kurang
+        var C=String.fromCharCode(A)
+        newString+=C
+    }
+}
+
+console.log(newString)
+// var kata= ' '.charCodeAt(0)
+// console.log(kata)
+// var kurang // spasi 32
+// if(kata==32){
+//     kurang = 97
+// }else{
+//     kurang = 65
+// }
+// var A=((kata-kurang + langkah)%26)+kurang
+// var C=String.fromCharCode(A)
+// console.log(C)
