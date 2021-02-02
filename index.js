@@ -14,26 +14,7 @@ var fungsiKu= () => {
     return 'apapun'
     
 }
-const penjumlahan2Tambah2=()=>{
-    return 2+2
-}
-const penjumlahan=(angka1,angka2=5)=>{
-    return angka1+angka2
-}
-const pengurangan=(angka1,angka2=5)=>{
-    if(angka1<angka2){
-        return angka2-angka1
-    }
-    return angka1-angka2
-}
-const perkalian=(angka1,angka2=5)=>{
-    return angka1*angka2
-}
 
-const showResult=(fn,angka1,angka2)=>{
-    var hasil= fn(angka1,angka2) //20 12
-    console.log(hasil)
-}
 
 // showResult(penjumlahan,10,2)
 
@@ -101,7 +82,7 @@ const showResult=(fn,angka1,angka2)=>{
 // console.log(nums)
 // console.log(numskali2)
 
-var nums=[1,3,4,7,8] // [1,3,7]
+// var nums=[1,3,4,7,8] // [1,3,7]
 
 
 // var mapDuplicate=(arr,cb)=>{
@@ -159,7 +140,7 @@ var nums=[1,3,4,7,8] // [1,3,7]
 
 // sort
 
-var nums=[200,1,30,4,7]
+// var nums=[200,1,30,4,7]
 
 // var numsort=nums.sort((a,b)=>{
 //     return a-b
@@ -173,9 +154,128 @@ var nums=[200,1,30,4,7]
 // var kata='dd'
 // let kata ='karate'
 // kata='dd'
-const kata='karate'
+// const kata='karate'
 
 
-console.log(kata)
+// console.log(kata)
+
+
+const penjumlahan2Tambah2=()=>{
+    return 2+2
+}
+const penjumlahan=(angka1,angka2=5)=>{
+    var hasil = angka1+angka2
+
+    return hasil
+}
+const pengurangan=(angka1,angka2=5)=>{
+    if(angka1<angka2){
+        return angka2-angka1
+    }
+    return angka1-angka2
+}
+const perkalian=(angka1,angka2=5)=>{
+    return angka1*angka2
+}
+
+// penjumlahan(2,2)
+
+
+// var angka=3
+
+// const showResult=(cb)=>{
+//     var hasil= cb() 
+//     console.log(hasil)
+// }
+
+// const calfunc=()=>{
+//     if(angka==2){
+//         return true
+//     }else{
+//         return false
+//     }
+// }
+
+// showResult(calfunc)
+// const fungsiku=()=>{
+//     var nama='dino'
+// }
+
+// for(let nama=1;nama<5;nama++){
+
+// }
+// if(true){
+//     let nama='dino'
+// }
+
+// let angka=3
+// angka=5
+// console.log(nama)
+
+// promise
+
+// var names=['chaplin','daniel','bob','anto','elaine']
+// var namessort=names.sort((a,b)=>{
+//     return a>b ? -1:1
+// })
+
+// console.log('c'>'d')
+// console.log(namessort)
+
+
+
+const Exercise2=(arr)=>{
+    let Newarr=arr.map((val)=>{
+        if(val%2 == 0){
+            return 'even'
+        }else{
+            return "odd"
+        }
+    })
+    return  Newarr// return sebauh array lagi
+}
+
+console.log(Exercise2([1,3,4,5]))
+console.log(Exercise2([22,17,19,20,14]))
+console.log(Exercise2([1,3,5]))
+console.log(Exercise2([2,4,6]))
+
+let duit=[91e5,98e5,95e5,103e5,93e5]
+
+const Filtergaji=(arr)=>{
+
+    let NewArr=arr.filter((val)=>{
+        return val - ((val*5)/100) > 9e6
+    })
+    return NewArr
+}
+
+console.log(Filtergaji(duit))
+
+
+const fibo=(angka)=>{
+
+    if(angka<3){
+        return 1
+    }
+
+    return fibo(angka-1)+fibo(angka-2)
+    
+
+}
+
+console.log(fibo(3)) //fibo 3 itu 2
+console.log(fibo(4)) //fibo 4 itu 3
+
+
+var kata='Abc, +12def'.toLowerCase()
+var kataaa=kata.replace(/[^a-z]/g,'')
+console.log(kataaa)
+
+
+var kata='abcdefghijklmnopqrstuvwxyz'.split(' ')
+
+
+
 
 
