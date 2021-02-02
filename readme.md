@@ -1,9 +1,9 @@
-# Day 6
-## array
+# Day 7
+## functions
 
 ## PR 
 
-market v.1.4
+market v.1.5
 
 
 
