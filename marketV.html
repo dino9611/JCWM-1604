@@ -5,49 +5,145 @@
     </head>
     <script>
         // jika user menginput melebihi stok maka jumlah stok yang ada menjadi qty
-        var hargaApel=10000
-        var hargaAnggur=15000
-        var hargaJeruk=20000
+        var buah=[
+            [ 'Apel',10000,5],
+            [ 'Anggur',15000,5],
+            [ 'Jeruk',20000,5],
+        ]
         
-        var stokAnggur= 5
-        var stokApel =5
-        var stokJeruk =5
+       var cart=[
+
+       ]
+
+
         alert('Selamat datang di toko kami')
-        alert(`Daftar Buah:\n1. Apel : Rp.${hargaApel}\n2. Anggur :Rp.${hargaAnggur}\n3. Jeruk : Rp.${hargaJeruk}`)
-        var qtyApel, qtyAnggur, qtyJeruk
         do {
-            qtyApel= prompt(`Berapa mau beli Apel= ${stokApel} ?`)
-            if(qtyApel > stokApel || isNaN(qtyApel) ||qtyApel<0){
-                alert('stok tidak mencukupi maka mohon input ulang ')
-            }
-        } while (qtyApel > stokApel || isNaN(qtyApel)||qtyApel<0);
-
-        do {
-            qtyAnggur= prompt(`Berapa mau beli Anggur= ${stokAnggur} ?`)
-            if(qtyAnggur > stokAnggur || isNaN(qtyAnggur) ||qtyAnggur<0){
-                alert('stok tidak mencukupi maka mohon input ulang')
-            }
-        } while (qtyAnggur > stokAnggur || isNaN(qtyAnggur) || qtyAnggur<0);
-
-        do {
-            qtyJeruk= prompt(`Berapa mau beli Jeruk= ${stokJeruk} ?`)
-            if(qtyJeruk > stokJeruk || isNaN(qtyJeruk)){
-                alert('stok tidak mencukupi maka mohon input ulang')
-            }
-        } while (qtyJeruk > stokJeruk || isNaN(qtyJeruk));
+            var menuUtama=prompt(`
+            Daftar menu utama:
+            1. Menampilkan daftar buah
+            2. Manambah buah
+            3. Menghapus buah 
+            4. Membeli buah
+            5. Exit
+            `)
+            if(menuUtama == 1){
+                var result=''
+                for(var i=0;i<buah.length;i++){
+                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
+                }
+                alert(result)
+            }else if(menuUtama==2){
+                //input harga buah
+                var namabuah=prompt('mau nambah buah apa?')
+                var stok=prompt('berapa stoknya')
+                var hargasatuan=prompt('berapa harga satuannya')
+                // masukkan buah ke dalam array
+                buah.push([namabuah,hargasatuan,stok])
+                
+                var result=''
+                for(var i=0;i<buah.length;i++){
+                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
+                }
+                alert(result)
+            }else if(menuUtama==3){
+                var result=''
+                for(var i=0;i<buah.length;i++){
+                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
+                }
+                var menuHapus=prompt('mau menghapus buah apa ?\n' +result) //jawaban 1,2,3
+                // menghapus data di array misal hapus 1 maka buah.splice(0,1)
+                buah.splice(menuHapus-1,1)
+                // tampilkan hasil 
+                result=''
+                for(var i=0;i<buah.length;i++){
+                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
+                }
+                alert(result)
+            }else if(menuUtama == 4){
+                do {
+                    var result=''
+                    for(var i=0;i<buah.length;i++){
+                        result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
+                    }
+                    var menuBeli= prompt('mau beli apa?\n'+result) // 1... 2..dst
+                    var qtyBeli
+                    do {
+                        qtyBeli=prompt(`mau beli buah ${buah[menuBeli-1][0]} berapa?(stok=${buah[menuBeli-1][2]})`)
+             
+                        if(qtyBeli > buah[menuBeli-1][2]  || isNaN(qtyBeli) ||qtyBeli<0){
+                            alert('stok tidak mencukupi maka mohon input ulang')
+                        }
+                    } while (qtyBeli > buah[menuBeli-1][2] || isNaN(qtyBeli) || qtyBeli<0);
+                    // mengurangi stok
+                    buah[menuBeli-1][2]-=qtyBeli
+                    // menambahkan produk ke cart
+                    cart.push([buah[menuBeli-1][0],buah[menuBeli-1][1],qtyBeli])
+                    // buah[0][0]
+                    // cari didalam cart ada atau tidak yang namanya apel 
+                    // cara mencarinya dengan looping
+                    // cart=[['apel',10000,2],['apel',10000,1]]
+                    //     
     
-        var Total= (hargaApel * qtyApel)+ (qtyAnggur*hargaAnggur) + (qtyJeruk*hargaJeruk)
-        var Bayar
-        do {
-            Bayar=prompt(`1. Apel= ${qtyApel} * Rp.${hargaApel} = Rp.${qtyApel*hargaApel}\n2. Anggur= ${qtyAnggur} * Rp.${hargaAnggur} = Rp.${qtyAnggur*hargaAnggur}\n3. Jeruk =${qtyJeruk} * Rp.${hargaJeruk} = Rp.${qtyJeruk*hargaJeruk}\nTotal= Rp. ${Total}`)
-            if(Bayar > Total){
-                alert(`kembalian anda adalah Rp.${Bayar-Total}`)
-            }else if(Bayar == Total){
-                alert('terima kasih duitnya pas bos')
+                    var konfirmasi=confirm('mau belanja lagi nggak')
+    
+                } while (konfirmasi);
+                
+                var TotalBelanja=0
+                var struct=''
+                for(var i=0;i<cart.length;i++){
+                    TotalBelanja+=cart[i][1]*cart[i][2]
+                    struct+=`${i+1}.${cart[i][0]} @ Rp.${cart[i][1]} X ${cart[i][2]}   ${cart[i][1]*cart[i][2]}\n`
+                }
+                do {
+                    var Tampilanbayar=prompt(struct+ 'Total Rp.'+TotalBelanja)
+                    if(Tampilanbayar > TotalBelanja){
+                        alert(`kembalian anda adalah Rp.${Tampilanbayar-TotalBelanja}`)
+                    }else if(Tampilanbayar == TotalBelanja){
+                        alert('terima kasih duitnya pas bos')
+                    }else{
+                        alert('anda miskin mohon ulangi input')
+                    }
+                } while (Tampilanbayar<TotalBelanja);
             }else{
-                alert('anda miskin mohon ulangi input')
+                alert('selamat tinggal')
+                break
             }
-        } while (Bayar<Total);
+        } while (true);
+        // alert(`Daftar Buah:\n1. Apel : Rp.${hargaApel}\n2. Anggur :Rp.${hargaAnggur}\n3. Jeruk : Rp.${hargaJeruk}`)
+        // var qtyApel, qtyAnggur, qtyJeruk
+        // do {
+        //     qtyApel= prompt(`Berapa mau beli Apel= ${stokApel} ?`)
+        //     if(qtyApel > stokApel || isNaN(qtyApel) ||qtyApel<0){
+        //         alert('stok tidak mencukupi maka mohon input ulang ')
+        //     }
+        // } while (qtyApel > stokApel || isNaN(qtyApel)||qtyApel<0);
+
+        // do {
+        //     qtyAnggur= prompt(`Berapa mau beli Anggur= ${stokAnggur} ?`)
+        //     if(qtyAnggur > stokAnggur || isNaN(qtyAnggur) ||qtyAnggur<0){
+        //         alert('stok tidak mencukupi maka mohon input ulang')
+        //     }
+        // } while (qtyAnggur > stokAnggur || isNaN(qtyAnggur) || qtyAnggur<0);
+
+        // do {
+        //     qtyJeruk= prompt(`Berapa mau beli Jeruk= ${stokJeruk} ?`)
+        //     if(qtyJeruk > stokJeruk || isNaN(qtyJeruk)){
+        //         alert('stok tidak mencukupi maka mohon input ulang')
+        //     }
+        // } while (qtyJeruk > stokJeruk || isNaN(qtyJeruk));
+    
+        // var Total= (hargaApel * qtyApel)+ (qtyAnggur*hargaAnggur) + (qtyJeruk*hargaJeruk)
+        // var Bayar
+        // do {
+        //     Bayar=prompt(`1. Apel= ${qtyApel} * Rp.${hargaApel} = Rp.${qtyApel*hargaApel}\n2. Anggur= ${qtyAnggur} * Rp.${hargaAnggur} = Rp.${qtyAnggur*hargaAnggur}\n3. Jeruk =${qtyJeruk} * Rp.${hargaJeruk} = Rp.${qtyJeruk*hargaJeruk}\nTotal= Rp. ${Total}`)
+        //     if(Bayar > Total){
+        //         alert(`kembalian anda adalah Rp.${Bayar-Total}`)
+        //     }else if(Bayar == Total){
+        //         alert('terima kasih duitnya pas bos')
+        //     }else{
+        //         alert('anda miskin mohon ulangi input')
+        //     }
+        // } while (Bayar<Total);
 
         
 
