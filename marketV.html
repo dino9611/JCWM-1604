@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Market V.1.3</title>
+        <title>Market V.1.3 with object</title>
     </head>
     <script>
         // jika user menginput melebihi stok maka jumlah stok yang ada menjadi qty
         var buah=[
-            [ 'Apel',10000,5],
-            [ 'Anggur',15000,5],
-            [ 'Jeruk',20000,5],
+            {name:'Apel',price:10000,stock:5},
+            {name:'Anggur',price:15000,stock:5},
+            {name:'Jeruk',price:20000,stock:5},
         ]
-        
-       var cart=[
+        // buah[0].price
+        var cart=[
 
-       ]
-
-
+        ]
         alert('Selamat datang di toko kami')
         do {
             var menuUtama=prompt(`
@@ -29,7 +27,7 @@
             if(menuUtama == 1){
                 var result=''
                 for(var i=0;i<buah.length;i++){
-                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
+                    result+=`${i+1}. ${buah[i].name} @ Rp.${buah[i].price} stok=${buah[i].stock}\n`
                 }
                 alert(result)
             }else if(menuUtama==2){
@@ -38,18 +36,18 @@
                 var stok=prompt('berapa stoknya')
                 var hargasatuan=prompt('berapa harga satuannya')
                 // masukkan buah ke dalam array
-                buah.push([namabuah,hargasatuan,stok])
+                buah.push({price:hargasatuan,stock:stok,name:namabuah})
                 
                 var result=''
                 for(var i=0;i<buah.length;i++){
-                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
+                    result+=`${i+1}. ${buah[i]['name']} @ Rp.${buah[i]['price']} stok=${buah[i]['stock']}\n`
                 }
                 alert(result)
                 // showBuah()
             }else if(menuUtama==3){
                 var result=''
                 for(var i=0;i<buah.length;i++){
-                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
+                    result+=`${i+1}. ${buah[i].name} @ Rp.${buah[i].price} stok=${buah[i].stock}\n`
                 }
                 var menuHapus=prompt('mau menghapus buah apa ?\n' +result) //jawaban 1,2,3
                 // menghapus data di array misal hapus 1 maka buah.splice(0,1)
@@ -57,28 +55,28 @@
                 // tampilkan hasil 
                 result=''
                 for(var i=0;i<buah.length;i++){
-                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
+                    result+=`${i+1}. ${buah[i].name} @ Rp.${buah[i].price} stok=${buah[i].stock}\n`
                 }
                 alert(result)
             }else if(menuUtama == 4){
                 do {
                     var result=''
                     for(var i=0;i<buah.length;i++){
-                        result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
+                        result+=`${i+1}. ${buah[i].name} @ Rp.${buah[i].price} stok=${buah[i].stock}\n`
                     }
                     var menuBeli= prompt('mau beli apa?\n'+result) // 1... 2..dst
                     var qtyBeli
                     do {
-                        qtyBeli=prompt(`mau beli buah ${buah[menuBeli-1][0]} berapa?(stok=${buah[menuBeli-1][2]})`)
+                        qtyBeli=prompt(`mau beli buah ${buah[menuBeli-1].name} berapa?(stok=${buah[menuBeli-1].stock})`)
              
-                        if(qtyBeli > buah[menuBeli-1][2]  || isNaN(qtyBeli) ||qtyBeli<0){
+                        if(qtyBeli > buah[menuBeli-1].stock  || isNaN(qtyBeli) ||qtyBeli<0){
                             alert('stok tidak mencukupi maka mohon input ulang')
                         }
-                    } while (qtyBeli > buah[menuBeli-1][2] || isNaN(qtyBeli) || qtyBeli<0);
+                    } while (qtyBeli > buah[menuBeli-1].stock || isNaN(qtyBeli) || qtyBeli<0);
                     // mengurangi stok
-                    buah[menuBeli-1][2]-=qtyBeli
+                    buah[menuBeli-1].stock-=qtyBeli
                     // menambahkan produk ke cart
-                    cart.push([buah[menuBeli-1][0],buah[menuBeli-1][1],qtyBeli])
+                    cart.push({ name:buah[menuBeli-1].name,price:buah[menuBeli-1].price,qty:qtyBeli})
                     // buah[0][0]
                     // cari didalam cart ada atau tidak yang namanya apel 
                     // cara mencarinya dengan looping
@@ -92,8 +90,8 @@
                 var TotalBelanja=0
                 var struct=''
                 for(var i=0;i<cart.length;i++){
-                    TotalBelanja+=cart[i][1]*cart[i][2]
-                    struct+=`${i+1}.${cart[i][0]} @ Rp.${cart[i][1]} X ${cart[i][2]}   ${cart[i][1]*cart[i][2]}\n`
+                    TotalBelanja+=cart[i].price*cart[i].qty
+                    struct+=`${i+1}.${cart[i].name} @ Rp.${cart[i].price} X ${cart[i].qty}   ${cart[i].price*cart[i].qty}\n`
                 }
                 do {
                     var Tampilanbayar=prompt(struct+ 'Total Rp.'+TotalBelanja)
