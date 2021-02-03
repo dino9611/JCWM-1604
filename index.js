@@ -2,8 +2,6 @@
 function myFunction(param) {
     // console.log('line 3')
     kata=param
-
-
 }
 // f(x)=5x+1
 // f(y)=1y+2
