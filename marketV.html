@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Market V.1.3</title>
+        <title>Market V.1.4</title>
     </head>
     <script>
         // jika user menginput melebihi stok maka jumlah stok yang ada menjadi qty
+     
         var buah=[
             [ 'Apel',10000,5],
             [ 'Anggur',15000,5],
             [ 'Jeruk',20000,5],
         ]
+      
         
-       var cart=[
+        var cart=[
 
-       ]
+        ]
+        //    tanpa return
+        function printBuah(){
+            var result=''
+            buah.forEach((val,index)=>{
+                result+=`${index+1}. ${val[0]} @ Rp.${val[1]} stok=${val[2]}\n`
+            })
+            alert(result)
+        }
+        //    dengan return
+        function printBuah1(){
+            var result=''
+            buah.forEach((val,index)=>{
+                result+=`${index+1}. ${val[0]} @ Rp.${val[1]} stok=${val[2]}\n`
+            })
+            return result
+        }
 
 
         alert('Selamat datang di toko kami')
@@ -27,11 +45,7 @@
             5. Exit
             `)
             if(menuUtama == 1){
-                var result=''
-                for(var i=0;i<buah.length;i++){
-                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
-                }
-                alert(result)
+                alert(printBuah1())
             }else if(menuUtama==2){
                 //input harga buah
                 var namabuah=prompt('mau nambah buah apa?')
@@ -39,34 +53,18 @@
                 var hargasatuan=prompt('berapa harga satuannya')
                 // masukkan buah ke dalam array
                 buah.push([namabuah,hargasatuan,stok])
-                
-                var result=''
-                for(var i=0;i<buah.length;i++){
-                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
-                }
-                alert(result)
-                // showBuah()
+                // tampilkan
+                alert(printBuah1())
             }else if(menuUtama==3){
-                var result=''
-                for(var i=0;i<buah.length;i++){
-                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
-                }
-                var menuHapus=prompt('mau menghapus buah apa ?\n' +result) //jawaban 1,2,3
+                var menuHapus=prompt('mau menghapus buah apa ?\n' +printBuah1()) //jawaban 1,2,3
                 // menghapus data di array misal hapus 1 maka buah.splice(0,1)
                 buah.splice(menuHapus-1,1)
                 // tampilkan hasil 
-                result=''
-                for(var i=0;i<buah.length;i++){
-                    result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
-                }
-                alert(result)
+                alert(printBuah1())
             }else if(menuUtama == 4){
                 do {
-                    var result=''
-                    for(var i=0;i<buah.length;i++){
-                        result+=`${i+1}. ${buah[i][0]} @ Rp.${buah[i][1]} stok=${buah[i][2]}\n`
-                    }
-                    var menuBeli= prompt('mau beli apa?\n'+result) // 1... 2..dst
+   
+                    var menuBeli= prompt('mau beli apa?\n'+printBuah1()) // 1... 2..dst
                     var qtyBeli
                     do {
                         qtyBeli=prompt(`mau beli buah ${buah[menuBeli-1][0]} berapa?(stok=${buah[menuBeli-1][2]})`)
@@ -91,9 +89,11 @@
                 
                 var TotalBelanja=0
                 var struct=''
+                cart.forEach((val,index)=>{
+                    TotalBelanja+=val[1]*val[2]
+                    struct+=`${index+1}.${val[0]} @ Rp.${val[1]} X ${val[2]}   ${val[1]*val[2]}\n`
+                })
                 for(var i=0;i<cart.length;i++){
-                    TotalBelanja+=cart[i][1]*cart[i][2]
-                    struct+=`${i+1}.${cart[i][0]} @ Rp.${cart[i][1]} X ${cart[i][2]}   ${cart[i][1]*cart[i][2]}\n`
                 }
                 do {
                     var Tampilanbayar=prompt(struct+ 'Total Rp.'+TotalBelanja)
@@ -105,6 +105,7 @@
                         alert('anda miskin mohon ulangi input')
                     }
                 } while (Tampilanbayar<TotalBelanja);
+                
             }else{
                 alert('selamat tinggal')
                 break
