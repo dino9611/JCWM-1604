@@ -460,7 +460,13 @@ const mode=(arr=[])=>{
 }
 
 
-console.log(mode(arrTes))
+// console.log(mode(arrTes))
+var str='hai aku'
+var kata=str.split('').reverse().join('')
+console.log(kata)
+kata=kata.split(' ').reverse().join(' ')
+console.log(kata)
+
 
 
 
