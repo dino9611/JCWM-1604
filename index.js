@@ -72,7 +72,7 @@ console.log(user)
 // PR
 // buatlah function untuk mengecek plat kendaraan plat 
 // yang diperbolehkan sesuai tangal hari ini ganjil atau genap
-// contoh tanggal hari ini genap
+// contoh tanggal hari ini 4 genap
 
 console.log(cekPlat('B 1234 ERD')) // boleh lewat
 console.log(cekPlat('BE 1239 AD')) // tidak boleh lewat
@@ -80,12 +80,12 @@ console.log(cekPlat('Bk 2344 CD')) // boleh lewat
 
 // cari angka terbesar dan terkecil dari satu buah array 
 
-console.log(angkaMaxMin([1,200,5,6,10,],'min')) //1
-console.log(angkaMaxMin([1,200,5,6,10,],'max')) //200
+console.log(angkaMaxMin([1,200,5,6,10],'min')) //1
+console.log(angkaMaxMin([1,200,5,6,10],'max')) //200
 
 
-// solve kasus koin ada koin 25 sen,10sen,5sen,1sen 
-// jika harus bayar 61 koin 
+// solve kasus koin ada koin 25sen,10sen,5sen,1sen 
+// jika harus bayar 61 sen 
 // berapa jumlah koin 
 // jawabannya 4 koin 
 // buat functionnya
@@ -94,4 +94,9 @@ console.log(koin(61))//4
 console.log(koin(62))//5
 console.log(koin(63))//6
 console.log(koin(15))//2
+
+
+
+// jika ketiga soal sudah diselesaikan boleh mengerjakan ini
+console.log(alghi()["andi"][1].andreas()) // berhasil
 
