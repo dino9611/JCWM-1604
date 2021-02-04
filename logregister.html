@@ -53,7 +53,32 @@
         }else{
             // untuk register cek dulu ada atau tidak username yang diinput didalm database
             // jika sama maka kasih tau ke user bahwa username telah dipakai
-            // 
+            // username nggak boleh sama dengan username yang ada didatabase
+            let username,password,confirmPass
+            do {
+                username=prompt('username')
+                // let password=prompt('password')
+                let dataUsers=users.filter((val)=> val.username == username ) //return array yang sudah difilter
+                if(dataUsers.length){
+                    alert(' username telah dipakai')
+                }else{
+                    break
+                }
+            } while (true);
+            do {
+                password=prompt('password')
+                confirmPass=prompt('password confirm')
+    
+                if(password == confirmPass){
+                    
+                    users.push({username,password})
+                    break
+                }else{
+                    alert('password dan confirm beda ulangi')
+                }
+                
+            } while (true);
+
         }
         
         var kembalikeUtama= confirm('kembali ke menu Utama')
