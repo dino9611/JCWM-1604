@@ -1,118 +1,97 @@
+// var time=60 
 
-//object literal
+// var timer= setInterval(()=>{
+//     console.log(time)
+//     time--
+//     if(time <0){
+//         clearInterval(timer)
+//     }
+// },1000)
 
-let User={
+// setInterval(cb, x);
+// setinterval berguna untuk menjalankan callback didalamnya setiap x miliseconds
+
+// setTimeout(cb,x)
+// setTimeout(() => {
+//     console.log('settimeout')
+// }, 3000);
+//settimeout akan menjalan kan function /cb didalamanya setelah x milisecond
+
+
+console.log('line 6')
+
+var nums=[1,2,3,4]
+
+var ganjil=[3,5,7]
+
+var ganjil=[9,...ganjil]
+
+// console.log(ganjil)
+
+
+var obj={
     username:'dino',
-    password:'saitama',
-    email:"dino@gmail.com",
-    isVerified:false,
-    isSeller:false,
-    height:170,
-    activeDay:['senin','sabtu'],
-    tampilkannama(){
-        console.log('passwordnya adalah '+ this.password)
-    }
+    password:'brando'
 }
+// console.log(obj)
+// cara edit object
+// obj.username='dio'
+// cara lain
+// obj['username']='dio'
+//cara nambah properti object
+// obj['stand']='star platinum'
+//cara lain
+// obj.stand='star platinum'
+// spread operator
+obj={...obj,username:'dio',stand:'star platinum'}
 
 
+// destructuring object
 
-// let newObj=new Object()
-// newObj.name='kamen rider'
-// User.tampilkannama()
-// cara mengakses property dalam object bisa menggunakan .namaproperty
-// console.table(User.)
-// console.log()
+// var username= obj.username
+// var password = obj.password
 
-let inputUser = 'username'
+// var {username,password} = obj
 
-// ini salah
-// console.log(User.inputUser)
-// ini benar
+// console.log(name)
+// console.log(password)
 
-// console.log(User[inputUser]) // bisa digantikan dengan sebuah variable berisi string
+var user={}
 
-class MakhlukHidup{
-    constructor(_name,_age){
-        this.namaja=_name,
-        this.age=_age
-    }
+var name='gon'
+var password='batu'
+console.log(user)
+// user.username=username
+// user.password=password
+//
+// user={...user,username,password}
+// sama dengan
+// user={...user,username:username,password:password}
+// console.log(user)
 
-    breath=()=>{
-        console.log('bernafas')
-    }
+// PR
+// buatlah function untuk mengecek plat kendaraan plat 
+// yang diperbolehkan sesuai tangal hari ini ganjil atau genap
+// contoh tanggal hari ini genap
 
-}
+console.log(cekPlat('B 1234 ERD')) // boleh lewat
+console.log(cekPlat('BE 1239 AD')) // tidak boleh lewat
+console.log(cekPlat('Bk 2344 CD')) // boleh lewat
 
-class Binatang extends MakhlukHidup{
-    constructor(_nama,_age,_jenis){
-        super(_nama,_age)
-        this.jenis=_jenis
-    }
+// cari angka terbesar dan terkecil dari satu buah array 
 
-    kalimat=()=>{
-        return 'hewan '+this.namaMakhluk + ' adalah '+this.jenis
-    }
-
-    akal=()=>{
-        console.log('tidak punya')
-    }
-
-}
-
-class Manusia extends MakhlukHidup{
-    constructor(_nama,_age,_work){
-        super(_nama,_age)
-        this.work=_work
-    }
-
-    worked=()=>{
-        console.log('bekerja')
-    }
+console.log(angkaMaxMin([1,200,5,6,10,],'min')) //1
+console.log(angkaMaxMin([1,200,5,6,10,],'max')) //200
 
 
+// solve kasus koin ada koin 25 sen,10sen,5sen,1sen 
+// jika harus bayar 61 koin 
+// berapa jumlah koin 
+// jawabannya 4 koin 
+// buat functionnya
 
-}
-
-// let Ayam=new Binatang('ayam','unggas')
-// let Sapi=new Binatang('sapi','mamalia')
-
-// let Animals=[
-//     new Binatang('ayam',1,'unggas'),
-//     new Binatang('sapi',2,'mamalia'),
-
-// ]
-
-// Animals[0].breath()
-// Animals[2].breath()
-// console.log(Animals[0].jenis)
-// console.log(Animals[2].work)
-
-// nomer 1
-let bulanke=new Date().getMonth()
-let harike=new Date().getDay()
-let tanggal=new Date().getDate()
-let tahun=new Date().getFullYear()
-let jam=new Date().getHours()
-let menit=new Date().getMinutes()
-let second=new Date().getSeconds()
-let hari =['minggu','senin','selasa','rabu','kamis','jumat','sabtu'] 
-let bulan=['januari','februari','maret','april','may','juni','july','agustus','september','oktober','november','december']
-
-// let message= `saat ini bulan ke ${bulanke+1} : ${bulan[bulanke]}`
-// console.log(message)
-
-let message1=`hari ini ${hari[harike]}, ${tanggal} ${bulan[bulanke]} ${tahun}
-pukul ${jam}:${menit}:${second}`
-
-console.log(message1)
-
-
-
-
-
-
-
-
-
-
+console.log(koin(61))//4
+console.log(koin(62))//5
+console.log(koin(63))//6
+console.log(koin(15))//2
 
