@@ -1,8 +1,8 @@
-# Day 9
-## html
+# Day 10
+## html & javascript
 
 ## PR 
-ada didalam file index.js
+
 
 
 

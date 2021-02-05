@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,tr,td,th{
+            padding: 5px;
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <center>
+
+        <h1>input Tag</h1>
+        
+        username:    
+        <input type="text" placeholder="username" id='username' >   
+        <br><br>
+        Sex : <br><br>
+        <!-- untuk mengelompokkan pada radio -->
+        Man <input type="radio" name='sex' >
+        Woman <input type="radio" name='sex'>
+        <br>
+        Ecommerce : <br><br>
+        Shoope <input type="checkbox" name="ecom" >
+        Tokped <input type="checkbox" name="ecom" >
+        Jd <input type="checkbox" name="ecom" >
+        <br><br>
+        pengiriman
+        <select id='kirim'>
+            <option value="" hidden selected>pilih kurir dulu</option>
+            <option value='JNE'>JNE</option>
+            <option value='JNT'>JNT</option>
+        </select>
+        <br>
+        <br>
+        <input type="button" value="submit" onclick="submitData()" >
+    
+        <button>
+            submit tag
+        </button>
+        <br>
+        <br>
+        <br>
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>username</th>
+                    <th>kelamin</th>
+                    <th>List Ecommerce</th>
+                    <th>kurir</th>
+                </tr>
+            </thead>
+            <tbody id='renderData'>
+
+                
+            </tbody>
+        </table>
+    </center>
+</body>
+<script>
+    // dom ini adalah document object model
+
+    var Sexes=['Man','Woman']
+    var checkvalue=['shopee','Tokped','Jd']
+    var Kurir=['JNE','JNT']
+
+    var data=[
+        {username:'dino',sex:'Man',ListCommerce:['Tokped'],kirim:'JNT'},
+        {username:'alby',sex:'Man',ListCommerce:['shopee,Tokped'],kirim:'JNT'},
+        {username:'will',sex:'Man',ListCommerce:['shopee,Tokped'],kirim:'JNE'}
+    ]
+
+
+    const PrintData=()=>{
+        
+        var result=''
+        for(var i=0;i<data.length;i++){
+            result+=` <tr>
+                    <td>${i+1}</td>
+                    <td>${data[i].username}</td>
+                    <td>${data[i].sex}</td>
+                    <td>${data[i].ListCommerce}</td>
+                    <td>${data[i].kirim}</td>
+                </tr> `
+        }
+
+        document.getElementById('renderData').innerHTML=result
+
+    }
+
+    PrintData()
+
+
+
+    function submitData(){
+        // cara mengambil value by tag
+        // let username=document.getElementsByTagName('input')[0].value
+        // cara mengambil value by id
+        let username=document.getElementById('username').value
+        // khusus radio sama checkbox punya property yang namanya checked
+
+        let sex
+        let kiri=document.getElementsByName('sex')[0].checked
+        let kanan=document.getElementsByName('sex')[1].checked
+        if(kiri){
+            sex='Man'
+        }else{
+            sex='Woman'
+        }
+
+        let ecom = []
+        let ecomInput=document.getElementsByName('ecom') // ini adalah array kalau di element[s] ada s
+        ecomInput.forEach((val,index)=>{
+            if(val.checked){
+             
+                ecom.push(checkvalue[index])
+            }
+        })
+        // console.log(ecomInput)
+
+        var kirim=document.getElementById('kirim').value
+        // console.log(kirim)
+
+        var dataInput={username:username,sex:sex,ListCommerce:ecom,kirim:kirim}
+        data.push(dataInput)
+        PrintData()
+        // besihkan semua input seperti semula
+        document.getElementById('username').value=''
+        document.getElementById('kirim').value=''
+        // bisa dilooping
+        document.getElementsByName('sex')[0].checked=false
+        document.getElementsByName('sex')[1].checked=false
+        //bisa dilooping
+        document.getElementsByName('ecom')[0].checked=false
+        document.getElementsByName('ecom')[1].checked=false
+        document.getElementsByName('ecom')[2].checked=false
+    }
+
+
+</script>
+</html>
