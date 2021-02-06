@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market 2.0</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <fieldset>
+            <legend>Filter Data</legend>
+            Nama : <input type="text" id='nama' oninput="onNamaInput()"> <br><br>
+            Harga : <input type="number" id='min' onkeyup="OnPriceUp()"> - <input type="number" id='max' onkeyup="OnPriceUp()"> <br><br>
+            Kategori :
+            <select onchange="onKategoriChange()" id='kategori'>
+                <option value="0">All</option>
+                <option value="1">Buah</option>
+                <option value="2">Elektronik</option>
+                <option value="3">Fast Food</option>
+                <option value="4">Baju</option>
+            </select> <br> <br>
+            <input type="button" value="Reset">
+        </fieldset>
+        <fieldset>
+            <legend>Input Data</legend>
+            <table>
+                <tr>
+                    <th><input type="text" placeholder="nama" id=""></th>
+                    <th><input type="number" placeholder="harga" id=""></th>
+                    <th>
+                        <select name="" id="">
+                                <option value="" hidden selected>pilih kategory</option>
+                                <option value="1">Buah</option>
+                                <option value="2">Elektronik</option>
+                                <option value="3">Fast Food</option>
+                                <option value="4">Baju</option>
+                        </select>
+                    </th>
+                    <th>
+                        <input type="number" placeholder="Stok" id="">
+                    </th>
+                </tr>
+            </table>
+            <br>
+            <input type="button" value="Input">
+        </fieldset>
+        <fieldset>
+            <legend>Tabel Data</legend>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Kategori</th>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody id='renderData'>
+
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+</body>
+<script src="./Market.js"></script>
+</html>

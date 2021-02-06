@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+</head>
+<body>
+    <h1>form</h1>
+    Name: &nbsp;&nbsp;&nbsp;&nbsp; <input type="text" placeholder="productname" id='productname'><br><br>
+    Price: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" placeholder="price" id='price'><br><br>
+    Condition: &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" name="condition" value='New'>
+    New
+    <input type="radio" name="condition" value='Second'>
+    Second
+    <br><br>
+    WareHouse: &nbsp;&nbsp;&nbsp;&nbsp;
+    <select id="warehouse">
+        <option value="JKT">JKT</option> 
+        <option value="BDG">BDG</option> 
+        <option value="BSD">BSD</option> 
+        <option value="BKS">BKS</option> 
+    </select>
+    <br><br>
+    Courier: &nbsp;&nbsp;&nbsp;&nbsp; 
+    JNE
+    <input type="checkbox" name="courier" value='JNE'>
+    JNT
+    <input type="checkbox" name="courier" value="JNT">
+    NINJA
+    <input type="checkbox" name="courier" value="NINJA">
+    <br><br>
+    <br>
+    <button onclick="submitData()">click here</button>
+    <p id='result'>result</p>
+
+</body>
+<script>
+    
+    var checkValue=['JNE','JNE','NINJA']
+
+    const submitData=()=>{
+
+        var productname=document.getElementById('productname').value
+        var price=document.getElementById('price').value
+        var kondisi
+        var kondisiInput=document.getElementsByName('condition')
+        if(kondisiInput[0].checked){
+            kondisi=kondisiInput[0].checked
+        }else if(kondisiInput[1].checked){
+            kondisi=kondisiInput[1].checked
+        }
+        var warehouse=document.getElementById('warehouse').value
+
+        var courierInput=document.getElementsByName('courier')
+        var courier=[]
+        for(let i=0;i<courierInput.length;i++){
+            if(courierInput[i].checked){
+                courier.push(courierInput[i].value)
+            }
+        }
+        
+        let result=''
+        result+=`Name : ${productname}<br>price:Rp.${price}<br>Condition:${kondisi}<br>Warehouse:${warehouse}
+        <br>courier : ${courier}
+        `
+        document.getElementById('result').innerHTML=result
+    }
+
+</script>
+</html>
