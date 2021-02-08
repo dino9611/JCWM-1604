@@ -189,6 +189,18 @@ var arrProduct = [
     { id: 1579581081342,category: 'baju' , name: "Hoodie", price: 300000, stock :7 },
     { id: 1579581081577,category: 'Buah' , name: "Apple", price: 10000, stock :8 }
 ];
+
+
+const SortArrofObj=(arrobj,props)=>{
+  
+    // var arrsort=arrobj.sort((a,b)=>b.price-a.price)//besar ke kecil
+    var arrsort=arrobj.sort((a,b)=>a[props]-b[props])//besar ke kecil
+    return arrsort
+}
+
+
+console.log(SortArrofObj(arrProduct,'stock'))
+
 var arrCategory = ["All", "Fast Food", "Elektronik", "baju", "Buah"];
 
 var angka=[
@@ -199,7 +211,7 @@ var angka=[
 //     return  val.category ==  arrCategory[1] 
 // })
 var output=angka.filter((val)=>{
-    console.log(val)
+    // console.log(val)
     return val > 3
 })
 var output1=[]
@@ -214,22 +226,58 @@ for(let i=0;i<angka.length;i++){
 //         output.push(arrProduct[i])
 //     }
 // }
-console.log(output)
-console.log(output1)
+// console.log(output)
+// console.log(output1)
 // ambil angka yang lebih dari tiga
 
 
-console.log(checkpass('asasasa')) // weak
-console.log(checkpass('PASS')) // weak
-console.log(checkpass('1234')) // weak
-console.log(checkpass('PaSS')) // medium
-console.log(checkpass('PASS1')) // medium
-console.log(checkpass('pass1')) // medium
-console.log(checkpass('Pass1')) // strong
+// console.log(checkpass('asasasa')) // weak
+// console.log(checkpass('PASS')) // weak
+// console.log(checkpass('1234')) // weak
+// console.log(checkpass('PaSS')) // medium
+// console.log(checkpass('PASS1')) // medium
+// console.log(checkpass('pass1')) // medium
+// console.log(checkpass('Pass1')) // strong
 
 
 
 
-console.log(ulang('ha',4))//hahahaha
-console.log(ulang('baka',4))//bakabakabakabaka
+// console.log(ulang('ha',4))//hahahaha
+// console.log(ulang('baka',4))//bakabakabakabaka
 
+
+function NumberToDigits(num=0){
+
+    num=num.toString().split('')
+
+    var arr=[]
+
+    for(let i=0;i<num.length;i++){
+        var result=''
+        for(let j=0;j<=i;j++){
+            result+=num[j]
+        }
+        arr.push(result)
+    }
+    return arr
+}
+
+// console.log(NumberToDigits(4020))
+
+// pertama dibuat jadi string
+//terus displit 
+//looping mundur
+// arr[i]*Math.pow(10,i)
+function NumberTo(num=0){
+    
+    num = num.toString().split('')
+  
+    for(let i=0;i<num.length;i++){
+        var pangkat=Math.pow(10,num.length-1-i)
+        num[i]=parseInt(num[i]) *pangkat
+    }
+    return num
+}
+
+// console.log(NumberTo(4120))//[4000,100,20,0]
+// console.log(NumberTo(54120))//[50000,4000,100,20,0]
