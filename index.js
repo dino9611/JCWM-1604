@@ -181,3 +181,55 @@ const alghi = ()=>{
 
 
 // if,96,be,25,go,715,up,? 2116
+
+
+var arrProduct = [
+    { id: 1579581080923,category: 'Fast Food' , name: "Noodle", price: 3500, stock : 9},
+    { id: 1579581081130,category: 'Elektronik' , name: "Headphone", price: 4300000, stock :8 },
+    { id: 1579581081342,category: 'baju' , name: "Hoodie", price: 300000, stock :7 },
+    { id: 1579581081577,category: 'Buah' , name: "Apple", price: 10000, stock :8 }
+];
+var arrCategory = ["All", "Fast Food", "Elektronik", "baju", "Buah"];
+
+var angka=[
+    5,4,3,2,1
+]
+
+// var output=arrProduct.filter((val)=>{
+//     return  val.category ==  arrCategory[1] 
+// })
+var output=angka.filter((val)=>{
+    console.log(val)
+    return val > 3
+})
+var output1=[]
+for(let i=0;i<angka.length;i++){
+    if(angka[i]>3){
+        output1.push(angka[i])
+    }
+}
+// var input = ''
+// for(let i=0;i<arrProduct.length;i++){
+//     if(arrProduct[i].name.toLowerCase().includes('noo')){
+//         output.push(arrProduct[i])
+//     }
+// }
+console.log(output)
+console.log(output1)
+// ambil angka yang lebih dari tiga
+
+
+console.log(checkpass('asasasa')) // weak
+console.log(checkpass('PASS')) // weak
+console.log(checkpass('1234')) // weak
+console.log(checkpass('PaSS')) // medium
+console.log(checkpass('PASS1')) // medium
+console.log(checkpass('pass1')) // medium
+console.log(checkpass('Pass1')) // strong
+
+
+
+
+console.log(ulang('ha',4))//hahahaha
+console.log(ulang('baka',4))//bakabakabakabaka
+

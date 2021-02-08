@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market 2.0</title>
+    <title>Market 2.1</title>
     <style>
         table,
         th,
@@ -12,7 +12,6 @@
             border-collapse: collapse;
             padding: 10px;
         }
-
         form {
             width: 50%;
             margin: 0 auto;
@@ -23,40 +22,32 @@
     <form>
         <fieldset>
             <legend>Filter Data</legend>
-            Nama : <input type="text" id='nama' oninput="onNamaInput()"> <br><br>
-            Harga : <input type="number" id='min' onkeyup="OnPriceUp()"> - <input type="number" id='max' onkeyup="OnPriceUp()"> <br><br>
+            Nama : <input type="text" id='nama' placeholder="name" oninput="filter()"> <br><br>
+            Harga : <input type="number" id='min' placeholder="min" onkeyup="filter()"> - <input type="number" id='max' placeholder="max" onkeyup="filter()"> <br><br>
             Kategori :
-            <select onchange="onKategoriChange()" id='kategori'>
-                <option value="0">All</option>
-                <option value="1">Buah</option>
-                <option value="2">Elektronik</option>
-                <option value="3">Fast Food</option>
-                <option value="4">Baju</option>
+            <select onchange="filter()" id='kategori'>
+             
             </select> <br> <br>
-            <input type="button" value="Reset">
+            <input type="button" value="Reset" onclick="Reset()">
         </fieldset>
         <fieldset>
             <legend>Input Data</legend>
             <table>
                 <tr>
-                    <th><input type="text" placeholder="nama" id=""></th>
-                    <th><input type="number" placeholder="harga" id=""></th>
+                    <th><input type="text" placeholder="nama" id="inputNama"></th>
+                    <th><input type="number" placeholder="harga" id="inputHarga"></th>
                     <th>
-                        <select name="" id="">
-                                <option value="" hidden selected>pilih kategory</option>
-                                <option value="1">Buah</option>
-                                <option value="2">Elektronik</option>
-                                <option value="3">Fast Food</option>
-                                <option value="4">Baju</option>
+                        <select  id="inputCategory">
+                              
                         </select>
                     </th>
                     <th>
-                        <input type="number" placeholder="Stok" id="">
+                        <input type="number" placeholder="Stok" id="inputStock">
                     </th>
                 </tr>
             </table>
             <br>
-            <input type="button" value="Input">
+            <input type="button" value="Input" onclick="inputData()">
         </fieldset>
         <fieldset>
             <legend>Tabel Data</legend>
@@ -68,10 +59,11 @@
                         <th>Nama</th>
                         <th>Harga</th>
                         <th>Stock</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody id='renderData'>
-
+          
                 </tbody>
             </table>
         </fieldset>
