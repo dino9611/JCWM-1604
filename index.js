@@ -199,7 +199,7 @@ const SortArrofObj=(arrobj,props)=>{
 }
 
 
-console.log(SortArrofObj(arrProduct,'stock'))
+// console.log(SortArrofObj(arrProduct,'stock'))
 
 var arrCategory = ["All", "Fast Food", "Elektronik", "baju", "Buah"];
 
@@ -231,13 +231,7 @@ for(let i=0;i<angka.length;i++){
 // ambil angka yang lebih dari tiga
 
 
-// console.log(checkpass('asasasa')) // weak
-// console.log(checkpass('PASS')) // weak
-// console.log(checkpass('1234')) // weak
-// console.log(checkpass('PaSS')) // medium
-// console.log(checkpass('PASS1')) // medium
-// console.log(checkpass('pass1')) // medium
-// console.log(checkpass('Pass1')) // strong
+
 
 
 
@@ -268,16 +262,97 @@ function NumberToDigits(num=0){
 //terus displit 
 //looping mundur
 // arr[i]*Math.pow(10,i)
-function NumberTo(num=0){
+// function NumberTo(num=0){
     
-    num = num.toString().split('')
+//     num = num.toString().split('')
   
-    for(let i=0;i<num.length;i++){
-        var pangkat=Math.pow(10,num.length-1-i)
-        num[i]=parseInt(num[i]) *pangkat
-    }
-    return num
-}
+//     for(let i=0;i<num.length;i++){
+//         var pangkat=Math.pow(10,num.length-1-i)
+//         num[i]=parseInt(num[i]) *pangkat
+//     }
+//     return num
+// }
 
 // console.log(NumberTo(4120))//[4000,100,20,0]
 // console.log(NumberTo(54120))//[50000,4000,100,20,0]
+
+
+
+const checkpass=(pass)=>{
+
+    var hurufkecil='abcdefghijklmnopqrstuvwxyz'.split('')
+    var hurufbesar='abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('')
+    var angka='012345689'.split('')
+    var passInput=pass.split('')
+    // var kekuatan=0
+    var skorhurufkbesar=0
+    var skorhurufkecil=0
+    var skorangka=0
+    
+    for(let i=0;i<passInput.length;i++){
+
+        if(skorhurufkbesar == 0 ||skorhurufkecil == 0){
+            for(let j=0;j<hurufkecil.length;j++){
+                if(passInput[i]== hurufkecil[j]){
+                    skorhurufkecil=1 
+                }else if( passInput [i] == hurufbesar [j]){
+                    skorhurufkbesar=1
+                }
+            }
+        }
+
+        for(let k=0;k<angka.length;k++){
+            if(passInput[i]== angka[k]){
+                skorangka=1
+            }
+        }   
+    }
+    var total =skorhurufkbesar+skorhurufkecil+skorangka
+    if(total == 3){
+        return 'Strong'
+    }else if( total == 2){
+        return 'Medium'
+    }else{
+        return 'Weak'
+    }
+
+}
+
+console.log(checkpass('asasasa')) // weak
+console.log(checkpass('PASS')) // weak
+console.log(checkpass('1234')) // weak
+console.log(checkpass('PaSS')) // medium
+console.log(checkpass('PASS1')) // medium
+console.log(checkpass('pass1')) // medium
+console.log(checkpass('Pass1')) // strong
+
+
+
+
+
+
+
+const katapanjang=(str)=>{
+    
+    var arr=str.split('')
+    var result=''
+    for(let i=0;i<arr.length;i++){
+        for(let j=0;j<=i;j++){
+            if(j == 0){
+                result+=arr[i].toUpperCase()
+            }else{
+                result+=arr[i]
+            }
+        }
+        if(i<arr.length-1){
+            result+='-'
+        }
+    }
+    return result
+}
+
+
+// console.log(katapanjang('abcd'))//A-Bb-Ccc-Dddd
+// console.log(katapanjang('aku'))//A-Kk-Uuu
+// console.log(katapanjang('qwer'))//Q-Ww-Eee-Rrrr
+

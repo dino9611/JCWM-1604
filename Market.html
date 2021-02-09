@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Market 2.1</title>
+    <title>Market 2.2</title>
     <style>
         table,
         th,
@@ -20,6 +20,9 @@
 </head>
 <body>
     <form>
+        <center>
+            <h1>Market V 2.2</h1>
+        </center>
         <fieldset>
             <legend>Filter Data</legend>
             Nama : <input type="text" id='nama' placeholder="name" oninput="filter()"> <br><br>
@@ -59,6 +62,7 @@
                         <th>Nama</th>
                         <th>Harga</th>
                         <th>Stock</th>
+                        <th>Buy</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -66,6 +70,34 @@
           
                 </tbody>
             </table>
+        </fieldset>
+        <fieldset>
+            <legend>Cart</legend>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Kategori</th>
+                        <th>Nama</th>
+                        <th>Qty</th>
+                        <th>Harga</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id='renderCart'>
+           
+                </tbody>
+            </table>
+            <br>
+            <input type="button" value="Payment" onclick="funcPayment()">
+        </fieldset>
+        <fieldset>
+            <legend>Payment</legend>
+            <h2>Transaction Detail</h2>
+            <div id='payment'>
+                <p>dasdas</p>
+       
+            </div>
         </fieldset>
     </form>
 </body>

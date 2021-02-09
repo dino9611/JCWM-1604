@@ -9,6 +9,20 @@ var arrProduct = [
 // init value
 var arrCategory = ["All", "Fast Food", "Elektronik", "Baju", "Buah"];
 
+class Cart{
+    constructor(_id,_category,_name,_price,_qty){
+        this.id=_id
+        this.category=_category
+        this.name=_name
+        this.price=_price
+        this.qty=_qty
+    }
+}
+
+var cart=[
+
+]
+
 var indexEdit=-1
 
 const Reset =()=>{
@@ -30,6 +44,9 @@ const Printdata=(arr)=>{
                         <td><input type="number" placeholder="harga" value=${val.price} id="inputEditHarga${index}"></td>
                         <td><input type="number" placeholder="stock" value=${val.stock} id="inputEditStock${index}"></td>
                         <td>
+                            <input type="button" value="Add" onclick="AddToCart(${val.id})">
+                        </td>
+                        <td>
                             <input type="button" value="Save" onclick="onEditSaveClick(${val.id})">
                             <input type="button" value="Cancel" onclick="onCancelEditClick()">
                         </td>
@@ -41,6 +58,9 @@ const Printdata=(arr)=>{
                     <td>${val.name}</td>
                     <td>${val.price}</td>
                     <td>${val.stock}</td>
+                    <td>
+                        <input type="button" value="Add" onclick="AddToCart(${val.id})">
+                    </td>
                     <td>
                         <input type="button" value="Delete" onclick="onDeleteClick(${val.id})">
                         <input type="button" value="Edit" onclick="onEditClick(${index})">
@@ -70,11 +90,57 @@ const prinInputCategory=()=>{
     document.getElementById('inputCategory').innerHTML=result.join('')
 }
 
+const printCart=()=>{
+    let result=cart.map((val,index)=>{
+        return `<tr>
+        <td>${val.id}</td>
+        <td>${val.category}</td>
+        <td>${val.name}</td>
+        <td>${val.qty}</td>
+        <td>${val.price}</td>
+        <td>
+            <input type="button" value="Delete" onclick="deleteCart(${index})">  
+        </td>
+    </tr>`
+    })
+    document.getElementById('renderCart').innerHTML=result.join('')
+}
+
+
 // init 
 Printdata(arrProduct)
 printCategory()
 prinInputCategory()
+printCart()
 
+
+const AddToCart=(id)=>{
+
+    // console.log('haha')
+    // 
+    // console.log(cart)
+    var indexCart=cart.findIndex((val)=>val.id == id)
+    if(indexCart<0){
+        var index=arrProduct.findIndex((val)=>val.id==id) 
+        var objProd=arrProduct[index]
+        // var id=objProd.id
+        // var name=objProd.name
+        // var category=objProd.category
+        // var price=objProd.price
+        // pake destructuring
+        var {id,name,category,price}=objProd
+        cart.push(new Cart(id,category,name,price,1))
+    }else{
+        cart[indexCart].qty+=1
+    }
+    printCart()
+}
+
+const deleteCart=(index)=>{
+    cart.splice(index,1)
+    printCart()
+
+}
 
 const onEditClick=(index)=>{
     indexEdit=index
@@ -114,6 +180,7 @@ const onDeleteClick=(id)=>{
     Reset()
     Printdata(arrProduct)
 }
+// filter
 const filter=()=>{
     var kategori=document.getElementById('kategori').value 
     var min=document.getElementById('min').value
@@ -234,3 +301,22 @@ const onKategoriChange=()=>{
 }
 
 
+// payment
+
+const funcPayment=()=>{
+
+    var result = cart.map((val)=>{
+        return `<p>${val.id} | ${val.category} | ${val.name} | ${val.qty} |${val.price}|| ${val.price*val.qty}</p>`
+    })
+    // menghitung subtotal
+    var subtotal=0
+    cart.forEach((val)=>{
+        subtotal+=(val.price*val.qty)
+    })
+
+    var ppn=subtotal*0.1
+
+    var total=subtotal+ppn
+    document.getElementById('payment').innerHTML=result.join('') +`<h3>Subtotal :${subtotal}</h3><h4>PPN : ${ppn}</h4><h3>Total : ${total}</h3>`
+    
+}
