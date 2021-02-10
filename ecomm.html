@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tr,td,th,table{
+            border-collapse: collapse;
+            border:1px solid black;
+            padding: 10px;
+        }
+        body{
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>eCoom</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>nama</th>
+                    <th>foto</th>
+                    <th>Harga</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id='renderData'>
+                
+            </tbody>
+        </table>
+        <h1 id='isicart'></h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>nama</th>
+                    <th>foto</th>
+                    <th>Harga</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="renderCart">
+
+            </tbody>
+        </table>
+        <br>
+        <div id='payment'>
+            <!-- <button> payment </button> -->
+        </div>
+   
+        <p id='timer'></p>
+        <div id='bayar'>
+          
+        </div>
+    </center>
+</body>
+<script>
+    class Product{
+        constructor (_nama,_price,_foto){
+            this.nama=_nama
+            this.price=_price
+            this.foto=_foto
+        }
+    }
+    var arrProduct=[
+        new Product('ultra milk',3000,'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//96/MTA-2580970/ultra-jaya_ultra-jaya-milk-low-fat-high-calcium-cokelat-susu-uht--1000-ml---12-pcs-_full04.jpg'),
+        new Product('coklat',15000,'https://cf.shopee.co.id/file/18c6ba220f36f95db7c4cc42f156ae16')
+    ]
+    var time=10
+    var timer // variable untuk nampung interval 
+    var cart=[]
+    
+    const printData=()=>{
+        var result = arrProduct.map((val,index)=>{
+        return `  <tr>
+                    <td>${val.nama}</td>
+                    <td>${val.price}</td>
+                    <td><img src=${val.foto} alt=${val.foto} height='150px'></td>
+                    <td><button onclick='addtoCart(${index})'>Add</button></td>
+                </tr>`
+        })
+        document.getElementById('renderData').innerHTML=result.join('')
+    }
+
+    const totalharga=()=>{
+        return cart.reduce((preval,curval)=>{
+            return preval +curval.price
+        },0)
+    }
+
+    const printCart=()=>{
+        if(cart.length){
+            document.getElementById('isicart').innerHTML='cart ada ' + cart.length +' Rp.' + totalharga()
+            document.getElementById('payment').innerHTML='<button onclick="pay()"> payment </button>'
+        }else{
+            document.getElementById('isicart').innerHTML='cart kosong'
+            document.getElementById('payment').innerHTML=''
+
+        }
+        var result = cart.map((val,index)=>{
+            return `  <tr>
+                        <td>${val.nama}</td>
+                        <td>${val.price}</td>
+                        <td><img src=${val.foto} alt=${val.foto} height='150px'></td>
+                        <td><button onclick='deleteCart(${index})'>Delete</button></td>
+                    </tr>`
+            })
+        document.getElementById('renderCart').innerHTML=result.join('')
+
+    }
+    const addtoCart=(index)=>{
+        cart.push(arrProduct[index])
+        printCart()
+    }
+    const deleteCart=(index)=>{
+        cart.splice(index,1)
+        printCart()
+    }
+
+    const pay=()=>{
+        document.getElementById('bayar').innerHTML=`  <input type="number" placeholder="bayar" id='inputBayar'>
+            <button> bayar </button>`
+        timer=setInterval(()=>{
+            console.log(time)
+
+            document.getElementById('timer').innerHTML='time : '+time
+            time -- 
+            if(time<0){
+                clearInterval(timer)
+                document.getElementById('timer').innerHTML=''
+                document.getElementById('bayar').innerHTML=''
+                cart=[]
+                printCart()
+                time=10
+            }
+        },1000)
+    }
+    const bayar=()=>{
+        clearInterval(timer)
+        document.getElementById('timer').innerHTML=''
+        document.getElementById('bayar').innerHTML=''
+        cart=[]
+        printCart()
+        time=10
+    }
+    printCart()
+    printData()
+
+
+</script>
+</html>
