@@ -8,20 +8,35 @@
 <body>
     <center>
         <h1>cek kalimat</h1>
-        <textarea id="kalimat" cols="100" rows="10"></textarea>
+        <textarea id="kalimat" cols="100" rows="10" oninput="cek()"></textarea>
         <br>
         <button onclick="cek()">Submit</button>
-        <div>
-            <p>jumlah kalimat :</p>
-            <p>jumlah karakter : </p>
-            <p>jumlah kata : </p>
+        <div id='hasil'>
+         
         </div>
     </center>
 </body>
 <script>
+    
     const cek=()=>{
-        var kalimat=document.getElementById('kalimat').value
-        console.log(kalimat)
+        // ambil input value dari text area text area disini punya id kalimat
+        var kalimat=document.getElementById('kalimat').value.split('')
+        // untuk menghitung kata cukup kalo kata ada 5 harusnya spasi ada 4
+        var kata=0
+        // menghitung kalimat cukup hitung titiknya saja 
+        var totalkalimat=0
+        // hitung semuanya 
+        var karacter=0
+        for(let i = 0;i<kalimat.length;i++){
+            if(kalimat[i] == '.'){
+                totalkalimat++
+            }else if(kalimat[i]== ' '){
+                kata++
+            }
+            karacter++
+        }
+        document.getElementById('hasil').innerHTML=`<p>jumlah kalimat :${totalkalimat}</p>
+        <p>jumlah karakter :${karacter}</p><p>jumlah kata :${kalimat.length == 0 ? kata:kata+1 }</p>`
     }
 
 </script>
