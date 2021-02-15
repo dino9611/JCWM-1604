@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No.1</title>
+</head>
+<body>
+    <h1>PATTERN</h1>
+    <input type="number" id="bebas" placeholder="masukkan angka">
+    <br><br>
+    <input type="button" value="ganjil" onclick="ganjil()">
+    <input type="button" value="huruf" onclick="huruf()">
+    <h1>RESULT :</h1>
+    <p>
+        <!-- 1 <br> 3 5 <br> 7 9 11 <br> -->
+        <!-- B<br>
+        D F<br>
+        H J L<br> -->
+    </p>
+    <p>
+
+    </p>
+</body>
+<script>
+    // 1,3,5,7,9,11
+
+    const ganjil=()=>{
+        var angka=document.getElementById('bebas').value
+        var result=''
+        var deret=1
+        for(let i=0;i<angka;i++){
+            for(let j=0;j<=i;j++){
+                result+=` ${deret} `
+                deret+=2
+            }
+            result+='<br>'
+        }
+        console.log(result)
+        document.getElementsByTagName('p')[0].innerHTML=result
+    }
+
+    const huruf=()=>{
+        var listhuruf='abcdefghijklmnopqrstuvwxyz'.toUpperCase().split('')
+        // listhuruf[1] // b
+        // ['b','d','f','h','j','l']
+        // listhuruf[3] // d
+        // listhuruf[5] // f
+        // listhuruf[7] // h
+        var angka=document.getElementById('bebas').value
+        var result=''
+        var deret=1 
+        for(let i=0;i<angka;i++){
+            for(let j=0;j<=i;j++){
+                result+=` ${listhuruf[deret]} `
+                deret+=2
+            }
+            result+='<br>'
+        }
+        console.log(result)
+        document.getElementsByTagName('p')[0].innerHTML=result
+    }
+
+</script>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+</head>
+<body>
+    <h1>Deret Fibonacci</h1>
+    masukkan angka : <input type="number" id="angka" placeholder="masukkan angka">
+    <br> <br>
+    <input type="button" value="Show" onclick="show()">
+    <input type="button" value="Ganjil" onclick="ganjil()">
+    <input type="button" value="Genap" onclick="genap()">
+    <br>
+    <h1>Result</h1>
+    <p>
+
+    </p>
+</body>
+<script>
+
+    const fibo=(angka)=>{
+        if(angka == 0){
+            return 0
+        }
+        if(angka<3){
+            return 1
+        }
+
+        return fibo(angka-1)+fibo(angka-2)
+    }
+
+    const show = () =>{
+
+        var limit = document.getElementById('angka').value
+
+        // console.log(fibo(0))
+        // console.log(fibo(1))
+        // console.log(fibo(2))
+        // console.log(fibo(3))
+        // console.log(fibo(4))
+        // console.log(fibo(5))
+        // console.log(fibo(6))
+        // console.log(fibo(7))
+        // console.log(fibo(8))
+        // console.log(fibo(9))
+
+        // var fiboSequence=[fibo(0),fibo(1),fibo(2),fibo(3),fibo(4)]
+        var fiboSequence=[]
+        var angkafibo=0
+        do {
+            fiboSequence.push(fibo(angkafibo))
+            angkafibo++
+        } while (fibo(angkafibo)<limit);
+
+        // console.log(fiboSequence)
+        document.getElementsByTagName('p')[0].innerHTML=fiboSequence
+        //cara lain
+        // var i;
+        // var fib = []; // Initialize array!
+
+        // fib[0] = 0;
+        // fib[1] = 1;
+        
+        // for (i = 2; ; i++) {
+        // // Next fibonacci number = previous + one before previous
+        // // Translated to JavaScript:
+        //     var deretfib= fib[i - 2] + fib[i - 1]
+        //     if(deretfib >=limit){
+        //         break
+        //     }
+        //     fib[i] = deretfib;
+        // // console.log(fib[i]);
+        // }
+        // console.log(fib)
+    }
+    const ganjil =()=>{
+        var limit = document.getElementById('angka').value
+        var fiboSequence=[]
+        var angkafibo=0
+        do {
+            if(fibo(angkafibo)%2==1){
+                fiboSequence.push(fibo(angkafibo))
+            }
+            angkafibo++
+        } while (fibo(angkafibo)<limit);
+
+        console.log(fiboSequence)
+        var Result=''
+        var total=0
+        for(let i=0;i<fiboSequence.length;i++){
+            Result+=`${fiboSequence[i]}`
+            if(i < fiboSequence.length-1){
+                Result+='+'
+            }
+            total+=fiboSequence[i]
+        }
+        document.getElementsByTagName('p')[0].innerHTML=Result + ' = '+ total
+       
+    }
+    
+    const genap =()=>{
+        var limit = document.getElementById('angka').value
+        var fiboSequence=[]
+        var angkafibo=0
+        do {
+            if(fibo(angkafibo)%2==0){
+                fiboSequence.push(fibo(angkafibo))
+            }
+            angkafibo++
+        } while (fibo(angkafibo)<limit);
+
+        console.log(fiboSequence)
+        var Result=''
+        var total=0
+        for(let i=0;i<fiboSequence.length;i++){
+            Result+=`${fiboSequence[i]}`
+            if(i < fiboSequence.length-1){
+                Result+='+'
+            }
+            total+=fiboSequence[i]
+        }
+        document.getElementsByTagName('p')[0].innerHTML=Result + ' = '+ total
+       
+    }
+
+</script>
+</html>
